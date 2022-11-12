@@ -109,8 +109,12 @@ main {
 .pi--icons {
     display: flex;
     justify-content: space-between;
-    height: 20px;
     width: 100%;
+}
+
+.pi--icons svg {
+    height: 20px;
+    width: 20px;   
 }
 
 .flex-end {
