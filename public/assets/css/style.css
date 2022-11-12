@@ -5,7 +5,7 @@
 }
 
 :root {
-    --header-height: 110px;
+    --header-height: 100px;
 }
 
 header {
@@ -22,14 +22,14 @@ header {
 .logo--1 {
     font-family: 'Raleway', sans-serif;
     font-weight: 300;
-    font-size: 35px;
+    font-size: 30px;
     color: #313131;
 }
 
 .logo--2 {
     font-family: 'Parisienne', cursive;
     font-weight: 600;
-    font-size: 35px;
+    font-size: 30px;
     padding-left: 100px;
     line-height: 50px;
     color: #313131;
