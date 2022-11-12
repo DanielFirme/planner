@@ -30,7 +30,7 @@ header {
     font-family: 'Dancing Script', cursive;
     font-weight: 700;
     font-size: 35px;
-    padding-left: 100px;
+    padding-left: 80px;
     line-height: 50px;
     color: #313131;
 }
@@ -42,11 +42,16 @@ header h2 {
     color: #313131;
 }
 
+.date {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
 .date input {
     border: none;
     background-color: transparent;
     font-family: 'Raleway', sans-serif;
-    margin-right: 40px;
     margin-top: 10px;
 }
 
@@ -59,27 +64,50 @@ header h2 {
 
 aside {
     background-color: rgb(77, 119, 255);
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+    padding-top: 30px;
+    transition: all .5s ease;
+}
+
+.menu-closed {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
 }
 
 .menu--button {
-    margin-top: 30px;
-    margin-right: 20px;
-    margin-left: 10px;
-    height: 40px;
+    margin-right: 10px;
+    height: 30px;
     width: auto;
-    fill: #f2f2f2;  
+    fill: #f2f2f2;
+    transition: all .5s ease;
+    transform-origin: center;
+}
+
+.menu--button--rotate {
+    transform: rotate(90deg);
+}
+
+.open {
+    width: 200px;
 }
 
 main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    width: 100%;   
+
+    width: 100%;
+    overflow-x: auto;   
 }
 
 .task--box {
     display: flex;
     flex-direction: column;
     color: #313131;
+    height: 100%;
+    overflow-y: hidden;
 }
 
 .task--box--title {
@@ -87,7 +115,7 @@ main {
     font-size: 30px;
     background-color: #f5f5f5;
     text-shadow: 1px 1px 3px #c0d3d0;
-    margin: 20px 20px;
+    margin: 20px 15px;
     height: 60px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -100,10 +128,10 @@ main {
 
 .task--box--area {
     background-color: #f5f5f5;
-    height: 100%;
-    margin: 0 20px;
-    padding: 10px 10px;
+    margin: 0 15px;
     box-shadow: 0px 0px 20px #c0d3d0;
+    height: 100%;
+    overflow-y: auto;
 }
 
 .pi--icons {
@@ -117,12 +145,26 @@ main {
     width: 20px;   
 }
 
+.pi--icon--plus {
+    transform: rotate(45deg);
+}
+
+.pi-textarea {
+    flex: 1;
+    padding-top: 5px;
+}
+
 .flex-end {
-    justify-content: flex-end;
+    justify-content: flex-end !important;
 }
 
 .display-none {
     display: none;
+}
+
+.pi-arrows-area {
+    display: flex;
+    justify-content: space-between;
 }
 
 .pi--arrow-left,
@@ -132,12 +174,16 @@ main {
     fill: #313131;  
 }
 
-.task--box--area {
+.pi--arrow-left {
+    transform: rotate(180deg);
+}
+
+.post--it--box--area {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
+    gap: 15px;
     padding: 15px;
-
 }
 
 .post-it-area {
@@ -153,13 +199,11 @@ main {
 .post-it--main {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 
-/* .pi--plus {
-    
-} */
 
 
 
@@ -173,20 +217,15 @@ main {
     display: none;
 }
 
-
-@media (max-width: 1000px) {
-    main {
-        grid-template-columns: repeat(2, 1fr);  
+@media (max-width: 540px) {
+    header {
+        padding: 0px 10px;
     }
 }
 
-@media (max-width: 840px) {
-    main {
-        display: flex;
-        flex-direction: column;   
-    }
-    header {
-        flex-direction: column;
+@media (max-width: 360px) {
+    .logo--2 {
+        padding-left: 55px;
     }
 }
 
