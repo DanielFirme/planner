@@ -152,6 +152,9 @@ main {
 .pi-textarea {
     flex: 1;
     padding-top: 5px;
+    font-family: 'Cookie', cursive;
+    font-size: 23px;
+    padding-top: 7px;
 }
 
 .flex-end {
