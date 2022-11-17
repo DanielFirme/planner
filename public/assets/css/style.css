@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
 }
 
 :root {
@@ -65,20 +66,23 @@ header h2 {
 aside {
     background-color: rgb(77, 119, 255);
     display: flex;
-    flex-direction: column;
-    width: 50px;
+    justify-content: space-between;
+    min-width: 250px;
     padding-top: 30px;
+    padding-bottom: 40px;
     transition: all .5s ease;
+    margin-left: -200px;
+    overflow: hidden;
+
 }
 
 .menu-closed {
     display: flex;
-    justify-content: flex-end;
-    width: 100%;
+    justify-content: center;
+    width: 50px;
 }
 
 .menu--button {
-    margin-right: 10px;
     height: 30px;
     width: auto;
     fill: #f2f2f2;
@@ -90,8 +94,104 @@ aside {
     transform: rotate(90deg);
 }
 
+.menu--opened {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+    overflow: hidden;
+}
+
+.plans {
+    width: 70%;
+    position: relative;
+    overflow: auto;
+}
+
+button {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+}
+
+.plan-creator {
+    position: fixed;
+    background-color: #FFF;
+    width: 180px;
+    padding: 10px;
+    border-top-right-radius: 10px;
+}
+
+#plan--creator--form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.plan--creator--buttons {
+    display: flex;
+
+}
+
+#plan--creator--form label {
+    font-size: 0.7rem;
+}
+
+#plan--creator--form label input {
+    width: 160px;
+}
+
+.plan--creator--buttons button {
+    display: inline-block;
+}
+
 .open {
+    margin-left: 0px;
+}
+
+.plans--list {
+    margin-top: 20px;
+}
+
+.plans--list li {
+    list-style: none;
+    border: 2px solid #FFF;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.plan {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFF;
+    font-size: .8rem;
+}
+
+.plan span {
+    color: #FFF;
+    background-color:  rgb(85, 170, 85);
+    margin: 5px;
+    padding: 2px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+.plan span:hover {
+    background-color:  rgb(71, 141, 71);
+}
+
+
+
+footer {
+    text-align: center;
+    position: fixed;
+    color: #FFF;
+    bottom: 0;
+    font-size: 0.7rem;
     width: 200px;
+    padding-bottom: 15px;
 }
 
 main {
@@ -161,10 +261,6 @@ main {
     justify-content: flex-end !important;
 }
 
-.display-none {
-    display: none;
-}
-
 .pi-arrows-area {
     display: flex;
     justify-content: space-between;
@@ -207,16 +303,59 @@ main {
     height: 100%;
 }
 
-
-
-
-
-
-
-
-
 .post-it--float,
 .pi-textarea-edit {
+    display: none;
+}
+.post-it-area.dragging {
+    opacity: 0.4;
+}
+
+.hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.new-task-criator {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(77, 119, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all .5s ease;
+}
+
+#ntc--form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 3px solid #000;
+    border-radius: 10px;
+    background-color: #FFF;
+    width: 200px;
+    height: 160px;
+    padding: 10px;
+    font-size: .8rem;
+
+}
+#ntc--form #task--name {
+    width: 100%;
+}
+
+.ntc--form--buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.ntc--form--buttons button {
+    display: inline-block;
+}
+
+.hide {
     display: none;
 }
 

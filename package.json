@@ -1,0 +1,20 @@
+{
+  "name": "planner",
+  "version": "1.0.0",
+  "description": "Planejador de Tarefas",
+  "main": "./public/assets/js/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielFirme/planner.git"
+  },
+  "author": "Daniel Firme",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanielFirme/planner/issues"
+  },
+  "homepage": "https://github.com/DanielFirme/planner#readme",
+  "type": "module"
+}
