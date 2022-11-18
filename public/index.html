@@ -84,15 +84,30 @@
                     <svg class="pi--arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
                 </div>
             </div>
-            <div class="post-it--float">
+            <div class="post-it--float hide">
                 <svg class="pi--xmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg>
                 <button class="pi--edit">Editar</button>
                 <button class="pi--delete">Deletar</button>
             </div>
-            <div class="pi-textarea-edit">
+            <div class="pi-textarea-edit hide">
                 <svg class="pi--xmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg>
-                <textarea></textarea>
-                <button class="pi--save">Salvar</button>
+                <form action="" id="textarea-form-edit">
+                    <label>
+                        Nome da Tarefa: <br>
+                        <input id="tfe--task--name" type="text" required>
+                    </label>
+                    <label>
+                        Cor: <br>
+                        <select id="tfe--color--task" required style="width:100%;">
+                            <option style="background-color: #81ff81;" selected value="#81ff81"></option>
+                            <option style="background-color: #ffbd7b;" value="#ffbd7b"></option>
+                            <option style="background-color: #ffcfcf;" value="#ffcfcf"></option>
+                            <option style="background-color: #e2c5ff;" value="#e2c5ff"></option>
+                            <option style="background-color: #ffff66;" value="#ffff66"></option>
+                        </select>
+                    </label>
+                    <button class="tfe--save-btn" type="submit">Salvar</button>
+                </form>
             </div>
         </div>
         <main id="tasks--box">

@@ -176,6 +176,7 @@ button {
     border: 2px solid #000;
     border-radius: 5px;
     font-size: 0.8rem;
+    cursor: pointer;
 }
 
 .plan span:hover {
@@ -293,6 +294,8 @@ main {
     padding: 15px;
     background-color: rgb(129, 255, 129);
     box-shadow: 5px 5px 5px #c0d3d0;
+    position: relative;
+    touch-action: auto;
 }
 
 .post-it--main {
@@ -303,10 +306,25 @@ main {
     height: 100%;
 }
 
+.pi--icon--plus:hover, 
+.pi--arrow-left:hover,
+.pi--arrow-right:hover,
+.pi--xmark:hover {
+    fill: #d1d9e4;
+}
+
 .post-it--float,
 .pi-textarea-edit {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: #FFF;
+    top: -15px;
+    left: 15px;
+    width: 100%;
+    height: 100%;
 }
+
 .post-it-area.dragging {
     opacity: 0.4;
 }
@@ -357,6 +375,14 @@ main {
 
 .hide {
     display: none;
+}
+
+.plan--active {
+    background-color: #F00 !important;
+}
+
+.plan--active:hover {
+    background-color: rgb(194, 3, 3) !important;
 }
 
 @media (max-width: 540px) {

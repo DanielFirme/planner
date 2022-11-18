@@ -1,5 +1,3 @@
-import { Plan } from "../plan/Plan.js";
-
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
@@ -73,8 +71,7 @@ export class PlansRepository {
             planLiClone.querySelector('.plan span')
                 .addEventListener('click', (e)=>{
                     const idPlan = +e.currentTarget.parentNode.parentNode.dataset.plan;
-                    plan = this.readID(idPlan);
-                    console.log(plan);
+
                 });
             planUl.appendChild(planLiClone);
         });

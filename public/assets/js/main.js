@@ -1,8 +1,8 @@
 import { PlansRepository } from "./api/db/PlansRepository.js";
-import { Area } from "./api/area/Area.js";
 import { Plan } from "./api/plan/Plan.js";
 import { PlanAreaController } from "./api/controllers/PlanAreaController.js";
-import { Task } from "./api/task/task.js";
+import { PlanController } from "./api/controllers/PlanController.js";
+import { TaskController } from "./api/controllers/TaskController.js";
 
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
@@ -112,6 +112,8 @@ function drop(e){
 
 const plansRepo = new PlansRepository();
 const planAreaController = new PlanAreaController();
+const planController = new PlanController(plansRepo, planAreaController);
+const taskController = new TaskController();
 
 const planCreator = $('.plan-creator');
 
@@ -135,8 +137,9 @@ $('#plan--creator--form')
 
     const plan = new Plan(inputs[0].value, inputs[1].value);
     plansRepo.create(plan);
-    plansRepo.showPlans();
+    planController.showPlans();
     planCreator.classList.add('hide');
+    planAreaController.showPlanAreasTasks(1, (plansRepo.read().length - 1));
     formEvent.reset();
 });
 
@@ -153,8 +156,7 @@ $('#ntc--form')
     });
 
     const idPlanArea = "0";
-    const task = new Task(inputs[0].value, inputs[1].value);
-    planAreaController.planAreaUpdate(idPlan, idPlanArea, task);
+    taskController.taskCreate(idPlan, idPlanArea, inputs[0].value, inputs[1].value);
     planAreaController.showPlanAreasTasks(1, idPlan);
     formEvent.reset();
     taskCriator.style.opacity = 0;
@@ -171,6 +173,8 @@ $('.ntc--form--buttons button[type="reset"]')
         }, 500);
     });
 
-plansRepo.showPlans();
+planController.showPlans();
+
+planAreaController.showPlanAreasTasks(3, 0);
 
 
