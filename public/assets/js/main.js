@@ -80,35 +80,23 @@ function dragLeave(e){
 function drop(e){
     const dropItem = $('.post-it-area.dragging');
     const dataTaskNumber = e.currentTarget.dataset.task; //or e.currentTarget.getAttribute('data-task');
+    const dataTaskInfo = dropItem.dataset.taskinfo.split('|');
+    const task = taskController.taskRead(...dataTaskInfo);
+    
     switch (dataTaskNumber){
         case "0":
-            dropItem.querySelector('.pi--icons').classList.add('flex-end');
-            dropItem.querySelector('.pi--icon--hourglass').classList.add('hide');
-            dropItem.querySelector('.pi--icon--checked').classList.add('hide');
-            dropItem.querySelector('.pi-arrows-area').classList.add('flex-end');
-            dropItem.querySelector('.pi--arrow-left').classList.add('hide');
-            dropItem.querySelector('.pi--arrow-right').classList.remove('hide');
+            taskController.taskCreate(dataTaskInfo[0], 0, task.content, task.color);
             break;
         case "1":
-            dropItem.querySelector('.pi--icons').classList.remove('flex-end');
-            dropItem.querySelector('.pi--icon--hourglass').classList.remove('hide');
-            dropItem.querySelector('.pi--icon--checked').classList.add('hide');
-            dropItem.querySelector('.pi-arrows-area').classList.remove('flex-end');
-            dropItem.querySelector('.pi--arrow-left').classList.remove('hide');
-            dropItem.querySelector('.pi--arrow-right').classList.remove('hide');
+            taskController.taskCreate(dataTaskInfo[0], 1, task.content, task.color);
             break;
         case "2":
-            dropItem.querySelector('.pi--icons').classList.remove('flex-end');
-            dropItem.querySelector('.pi--icon--hourglass').classList.add('hide');
-            dropItem.querySelector('.pi--icon--checked').classList.remove('hide');
-            dropItem.querySelector('.pi-arrows-area').classList.remove('flex-end');
-            dropItem.querySelector('.pi--arrow-left').classList.remove('hide');
-            dropItem.querySelector('.pi--arrow-right').classList.add('hide');
+            taskController.taskCreate(dataTaskInfo[0], 2, task.content, task.color);
             break;
     }
-
-
-    e.currentTarget.querySelector('.post--it--box--area').appendChild(dropItem);
+    
+    taskController.taskDelete(...dataTaskInfo);
+    planAreaController.showPlanAreasTasks(3, dataTaskInfo[0]);
     e.currentTarget.classList.remove('hover');  
 }
 

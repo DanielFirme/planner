@@ -42,6 +42,35 @@ export class PlanAreaController {
                     postItArea.addEventListener('dragstart', dragStart);
                     postItArea.addEventListener('dragend', dragEnd);
 
+                    switch (idPlanArea){
+                        case 0:
+                            postItArea.querySelector('.pi--icons').classList.add('flex-end');
+                            postItArea.querySelector('.pi--icon--hourglass').classList.add('hide');
+                            postItArea.querySelector('.pi--icon--checked').classList.add('hide');
+                            postItArea.querySelector('.pi-arrows-area').classList.add('flex-end');
+                            postItArea.querySelector('.pi--arrow-left').classList.add('hide');
+                            postItArea.querySelector('.pi--arrow-right').classList.remove('hide');
+                            
+                            break;
+                        case 1:
+                            postItArea.querySelector('.pi--icons').classList.remove('flex-end');
+                            postItArea.querySelector('.pi--icon--hourglass').classList.remove('hide');
+                            postItArea.querySelector('.pi--icon--checked').classList.add('hide');
+                            postItArea.querySelector('.pi-arrows-area').classList.remove('flex-end');
+                            postItArea.querySelector('.pi--arrow-left').classList.remove('hide');
+                            postItArea.querySelector('.pi--arrow-right').classList.remove('hide');
+                            
+                            break;
+                        case 2:
+                            postItArea.querySelector('.pi--icons').classList.remove('flex-end');
+                            postItArea.querySelector('.pi--icon--hourglass').classList.add('hide');
+                            postItArea.querySelector('.pi--icon--checked').classList.remove('hide');
+                            postItArea.querySelector('.pi-arrows-area').classList.remove('flex-end');
+                            postItArea.querySelector('.pi--arrow-left').classList.remove('hide');
+                            postItArea.querySelector('.pi--arrow-right').classList.add('hide');
+                            break;
+                    }
+
                     postItArea.querySelector('.pi--icon--plus')
                         .addEventListener('click', ()=>{
                             if(postItAreaFloat.classList.contains('hide')
@@ -62,12 +91,21 @@ export class PlanAreaController {
                                 .classList.add('hide');
                             postItArea.querySelector('.pi-textarea-edit.hide')
                                 .classList.remove('hide');
+                            postItArea.setAttribute('draggable', 'false');
+                            
+                            const dataTaskInfo = postItArea.dataset.taskinfo.split('|');
+                            const task = this.taskController.taskRead(...dataTaskInfo);
+                            
+                            postItTexAreaEdit.querySelector('#textarea-form-edit #tfe--task--name')
+                                .value = task.content;
+                            
+                            postItTexAreaEdit.querySelector('#textarea-form-edit #tfe--task--color')
+                                .value = task.color;
                         });
 
                     postItAreaFloat.querySelector('.pi--delete')
-                        .addEventListener('click', (event)=>{
-                            const dataTaskInfo = event.currentTarget
-                                .parentNode.parentNode.dataset.taskinfo.split('|');
+                        .addEventListener('click', ()=>{
+                            const dataTaskInfo = postItArea.dataset.taskinfo.split('|');
                             this.taskController.taskDelete(...dataTaskInfo);
                             this.showPlanAreasTasks(3, dataTaskInfo[0]);
                         });
@@ -77,7 +115,25 @@ export class PlanAreaController {
                         .addEventListener('click', ()=>{
                             postItArea.querySelector('.pi-textarea-edit')
                                 .classList.add('hide');
+                            postItArea.setAttribute('draggable', 'true');
                         });
+                    
+                    postItTexAreaEdit.querySelector('#textarea-form-edit')
+                    .addEventListener('submit', (event)=>{
+                        postItArea.querySelector('.pi-textarea-edit')
+                            .classList.add('hide');
+                        event.preventDefault();
+                        const { target: formEvent } = event;
+                        const inputs = [...formEvent.elements].filter((input)=>{
+                            return input.type !== 'submit';
+                        });
+                        const dataTaskInfo = postItArea.dataset.taskinfo.split('|');
+                        const task = this.taskController.taskRead(...dataTaskInfo);
+                        task.content = inputs[0].value;
+                        task.color = inputs[1].value;
+                        this.taskController.taskUpdate(...dataTaskInfo, task);
+                        this.showPlanAreasTasks(3, dataTaskInfo[0]);
+                    });
 
                     postItBoxArea.appendChild(postItArea);
                 });
