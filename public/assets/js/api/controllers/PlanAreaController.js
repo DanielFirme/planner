@@ -78,6 +78,36 @@ export class PlanAreaController {
                                 postItAreaFloat.classList.remove('hide');
                             }
                         });
+
+                    postItArea.querySelector('.pi--arrow-left')
+                        .addEventListener('click', ()=>{
+                            const task = this.taskController.taskRead(idPlan, idPlanArea, idTask);
+                            switch (idPlanArea) {
+                                case 1:
+                                    this.taskController.taskCreate(idPlan, 0, task.content, task.color);
+                                    break;
+                                case 2:
+                                    this.taskController.taskCreate(idPlan, 1, task.content, task.color);
+                                    break;
+                            }
+                            this.taskController.taskDelete(idPlan, idPlanArea, idTask);
+                            this.showPlanAreasTasks(3, idPlan);
+                        });
+
+                        postItArea.querySelector('.pi--arrow-right')
+                        .addEventListener('click', ()=>{
+                            const task = this.taskController.taskRead(idPlan, idPlanArea, idTask);
+                            switch (idPlanArea) {
+                                case 0:
+                                    this.taskController.taskCreate(idPlan, 1, task.content, task.color);
+                                    break;
+                                case 1:
+                                    this.taskController.taskCreate(idPlan, 2, task.content, task.color);
+                                    break;
+                            }
+                            this.taskController.taskDelete(idPlan, idPlanArea, idTask);
+                            this.showPlanAreasTasks(3, idPlan);
+                        });
                     
                     postItAreaFloat.querySelector('.pi--xmark')
                         .addEventListener('click', ()=>{
