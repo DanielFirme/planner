@@ -73,6 +73,8 @@ aside {
     transition: all .5s ease;
     margin-left: -200px;
     overflow: hidden;
+    position: relative;
+    z-index: 99;
 
 }
 
@@ -146,7 +148,7 @@ button {
 }
 
 .open {
-    margin-left: 0px;
+    transform: translateX(200px);
 }
 
 .plans--list {
