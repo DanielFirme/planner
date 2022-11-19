@@ -94,7 +94,7 @@ function drop(e){
             taskController.taskCreate(dataTaskInfo[0], 2, task.content, task.color);
             break;
     }
-    
+
     taskController.taskDelete(...dataTaskInfo);
     planAreaController.showPlanAreasTasks(3, dataTaskInfo[0]);
     e.currentTarget.classList.remove('hover');  
@@ -130,7 +130,7 @@ $('#plan--creator--form')
     plansRepo.create(plan);
     planController.showPlans();
     planCreator.classList.add('hide');
-    planAreaController.showPlanAreasTasks(1, (plansRepo.read().length - 1));
+    planAreaController.showPlanAreasTasks(3, (plansRepo.read().length - 1));
     formEvent.reset();
 });
 

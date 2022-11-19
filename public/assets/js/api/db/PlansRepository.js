@@ -40,40 +40,4 @@ export class PlansRepository {
         const dbPlans = this.read();
         return dbPlans[idPlan];
     }
-
-    showPlans(){
-        const dbPlans = this.read();
-        const planLi = $('.plan-model.hide');
-        const planUl = $('.plans--list');
-        while(planUl.querySelector('li')){
-            planUl.removeChild(planUl.querySelector('li'));
-        }
-        dbPlans.forEach((plan, id) => {
-            const planLiClone = planLi.cloneNode(true);
-            planLiClone.classList.remove('hide');
-            planLiClone.querySelector('.plan').innerHTML = `${plan.name}<span>ver</span>`;
-            planLiClone.setAttribute('data-plan', id);
-            planLiClone.querySelector('.delete-plan-btn')
-                .addEventListener('click', (e)=>{
-                    const idPlan = +e.currentTarget.parentNode.dataset.plan;
-                    this.delete(idPlan);
-                    this.showPlans();
-                });
-            planLiClone.querySelector('.new-task-btn')
-                .addEventListener('click', ()=>{
-                    const taskCriator = $('.new-task-criator');
-                    taskCriator.setAttribute('data-plan', id);
-                    taskCriator.classList.remove('hide');
-                    setTimeout(()=>{
-                        taskCriator.style.opacity = 1;
-                    }, 10);
-                });
-            planLiClone.querySelector('.plan span')
-                .addEventListener('click', (e)=>{
-                    const idPlan = +e.currentTarget.parentNode.parentNode.dataset.plan;
-
-                });
-            planUl.appendChild(planLiClone);
-        });
-    }
 }
