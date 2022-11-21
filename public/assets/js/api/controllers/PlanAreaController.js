@@ -18,10 +18,14 @@ export class PlanAreaController {
     showPlanAreasTasks(numberPlanArea, idPlan){
         const planActive = $(`.plan-model[data-plan="${idPlan}"] .plan span`);
         const postItAreaModel = $('.post-it-area.model');
-        const data = $('.show--date');
+        const dateShow = $('.show--date');
         if(planActive){
             planActive.classList.add('plan--active');
-            data.innerText = this.plansRepo.readID(idPlan).date;
+            
+            const fullDate = (this.plansRepo.readID(idPlan).date).split('-');
+            fullDate[1] = +fullDate[1] - 1;
+            const date = new Date(...fullDate);
+            dateShow.innerText = new Intl.DateTimeFormat('pt-BR').format(date);
 
             for(let idPlanArea = 0; idPlanArea < numberPlanArea; idPlanArea++){
                 const area = this.readPlanArea(idPlan, idPlanArea);
@@ -169,7 +173,7 @@ export class PlanAreaController {
                 });
             };
         } else {
-            data.innerText = "";
+            dateShow.innerText = "";
             for(let idPlanArea = 0; idPlanArea < numberPlanArea; idPlanArea++){
                 const postItBoxArea = $(`.task--box--area[data-task="${idPlanArea}"] .post--it--box--area`);
                 while(postItBoxArea.querySelector('.post-it-area')){
