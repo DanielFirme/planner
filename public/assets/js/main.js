@@ -23,9 +23,9 @@ function numberOfTasksBoxsRelatedToScreenWidth(){
 
 function setWidthTaskBox(numberTasksBoxOnScreen) {
     let widthTasksBox = $("#tasks--box").offsetWidth;
-    if($('#menu').classList.contains('open')){
-        widthTasksBox += 200;
-    }
+    // if($('#menu').classList.contains('open')){
+    //     widthTasksBox += 200;
+    // }
     const widthTaskBox = (widthTasksBox / numberTasksBoxOnScreen);
     taskBox.forEach(item => {
         item.style.width = `${widthTaskBox}px`;
