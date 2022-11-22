@@ -35,6 +35,10 @@ function setWidthTaskBox(numberTasksBoxOnScreen) {
 function toggleMenu(e){
     e.currentTarget.classList.toggle('menu--button--rotate');
     $('#menu').classList.toggle('open');
+    if(!planCreator.classList.contains('hide')){
+        planCreator.classList.add('hide');
+    }
+    
 }
 
 window.addEventListener('resize', () => {
