@@ -26,18 +26,22 @@ export class PlanController {
                         this.showPlans();
                         this.planAreaController.showPlanAreasTasks(3, 0);
                     } else {
-                        alert('Selecione o plano para deletar');
+                        alert('Selecione o plano, apertando em "ver", para deletar');
                     }
                     
                 });
             planLiClone.querySelector('.new-task-btn')
-                .addEventListener('click', ()=>{
-                    const taskCriator = $('.new-task-criator');
-                    taskCriator.setAttribute('data-plan', id);
-                    taskCriator.classList.remove('hide');
-                    setTimeout(()=>{
-                        taskCriator.style.opacity = 1;
-                    }, 10);
+                .addEventListener('click', (e)=>{
+                    if(e.currentTarget.parentNode.querySelector('.plan span.plan--active')){
+                        const taskCriator = $('.new-task-criator');
+                        taskCriator.setAttribute('data-plan', id);
+                        taskCriator.classList.remove('hide');
+                        setTimeout(()=>{
+                            taskCriator.style.opacity = 1;
+                        }, 10);
+                    } else {
+                        alert('Aperte em "ver" para adicionar uma nova tarefa');
+                    }
                 });
             planLiClone.querySelector('.plan span')
                 .addEventListener('click', (e)=>{
