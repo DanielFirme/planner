@@ -41,6 +41,7 @@ function toggleMenu(e){
     
 }
 
+//Events
 window.addEventListener('resize', () => {
     numberTasksBoxsOnScreen = numberOfTasksBoxsRelatedToScreenWidth();
     setWidthTaskBox(numberTasksBoxsOnScreen);
@@ -50,15 +51,11 @@ $('.menu--button').addEventListener('click', toggleMenu);
 setWidthTaskBox(numberOfTasksBoxsRelatedToScreenWidth());
 
 
-
-
-//NeutralArea Events
 $$('.post-it-area').forEach(item=>{
     item.addEventListener('dragstart', dragStart);
     item.addEventListener('dragend', dragEnd);
 });
 
-//Areas Events
 $$('.task--box--area').forEach(area=>{
     area.addEventListener('dragover', dragOver);
     area.addEventListener('dragleave', dragLeave);
@@ -104,6 +101,13 @@ function drop(e){
     e.currentTarget.classList.remove('hover');  
 }
 
+export function mouseDownGrabbing(e){
+    e.currentTarget.classList.add('grabbing');
+}
+
+export function mouseUpGrab(e){
+    e.currentTarget.classList.remove('grabbing');
+}
 
 const plansRepo = new PlansRepository();
 const planAreaController = new PlanAreaController();

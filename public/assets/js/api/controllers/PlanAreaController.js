@@ -1,5 +1,5 @@
 import { PlansRepository } from "../db/PlansRepository.js";
-import { dragEnd, dragStart } from "../../main.js";
+import { dragEnd, dragStart, mouseDownGrabbing, mouseUpGrab } from "../../main.js";
 import { TaskController } from "./TaskController.js";
 
 const $ = document.querySelector.bind(document);
@@ -45,6 +45,8 @@ export class PlanAreaController {
                     postItArea.querySelector('.post-it--main .pi-textarea').innerText = task.content;
                     postItArea.addEventListener('dragstart', dragStart);
                     postItArea.addEventListener('dragend', dragEnd);
+                    postItArea.addEventListener('mousedown', mouseDownGrabbing);
+                    postItArea.addEventListener('mouseup', mouseUpGrab);
 
                     switch (idPlanArea){
                         case 0:

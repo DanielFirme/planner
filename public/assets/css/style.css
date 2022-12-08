@@ -359,6 +359,10 @@ main {
     touch-action: auto;
 }
 
+.post-it-area:hover {
+    cursor: grab;
+}
+
 .post-it--main {
     display: flex;
     flex-direction: column;
@@ -372,6 +376,7 @@ main {
 .pi--arrow-right:hover,
 .pi--xmark:hover {
     fill: #d1d9e4;
+    cursor: pointer;
 }
 
 .post-it--float,
@@ -459,6 +464,7 @@ main {
     justify-content: center;
     opacity: 0;
     transition: all .5s ease;
+    z-index: 100;
 }
 
 #ntc--form {
@@ -521,6 +527,11 @@ main {
 .plan--active:hover {
     background-color: rgb(194, 3, 3) !important;
 }
+
+.grabbing {
+    cursor: grabbing !important;
+}
+
 
 @media (max-width: 540px) {
     header {
